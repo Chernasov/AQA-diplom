@@ -2,3 +2,6 @@
 2.	Выполнить docker-compose.yml `docker-compose up`
 3.	Запустить SUT `java -jar artifacts/aqa-shop.jar`
 4.	
+5.
+6. Остановить SUT
+7. Остановить БД, выполнить `docker-compose down`
