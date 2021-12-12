@@ -14,13 +14,12 @@ public class DataHelper {
     }
 
     @Value
-    @Data
     public static class AuthInfo {
-        String number;
-        String month;
-        String year;
-        String holder;
         String cvc;
+        String holder;
+        String month;
+        String number;
+        String year;
     }
 
     public static String getApprovedCardNumber() {
@@ -60,12 +59,10 @@ public class DataHelper {
     }
 
     public static AuthInfo getValidUser() {
-        return new AuthInfo(getApprovedCardNumber(),
-                getMonth(), getYearFutureInPeriod(), getHolder(), getCVC());
+        return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
     }
 
     public static AuthInfo getDeclinedUser() {
-        return new AuthInfo(getDeclinedCardNumber(),
-                getMonth(), getYearFutureInPeriod(), getHolder(), getCVC());
+        return new AuthInfo(getCVC(), getHolder(), getMonth(), getDeclinedCardNumber(), getYearFutureInPeriod());
     }
 }

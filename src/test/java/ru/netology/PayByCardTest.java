@@ -45,4 +45,12 @@ public class PayByCardTest {
         payByCard.setUp(infoHolder);
         payByCard.errorMessage();
     }
+
+    @Test
+    void shouldUseAnyCardNumber () {
+        var infoHolderAnyCardNumber = new DataHelper.AuthInfo(DataHelper.getCVC(),DataHelper.getHolder(),
+                DataHelper.getMonth(),DataHelper.getRandomCardNumber(),DataHelper.getYearFutureInPeriod());
+        payByCard.setUp(infoHolderAnyCardNumber);
+        payByCard.errorMessage();
+    }
 }
