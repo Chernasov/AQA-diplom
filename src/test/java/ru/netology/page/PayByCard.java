@@ -39,5 +39,11 @@ public class PayByCard {
         message.last().shouldBe(hidden);
     }
 
-
+    public void errorMessage() {
+        message.last().shouldBe(visible, Duration.ofSeconds(15));
+        message.last().shouldHave(text("Ошибка! Банк отказал в проведении операции."));
+        $$(".notification__closer").last().click();
+        message.last().shouldBe(hidden);
+        message.first().shouldBe(hidden);
+    }
 }

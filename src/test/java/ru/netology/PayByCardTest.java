@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PayByCardTest {
-
+    private PayByCard payByCard;
 
     @BeforeAll
     static void setUpAll() {
@@ -24,6 +24,7 @@ public class PayByCardTest {
     void setUpPage() {
         open("http://localhost:8080/");
         $$(".button__text").first().click();
+        payByCard = new PayByCard();
     }
 
     @AfterAll
@@ -32,10 +33,16 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldTruePath() {
-        var payByCard = new PayByCard();
+    void shouldUseApprovedCard() {
         var infoValidHolder = DataHelper.getValidUser();
         payByCard.setUp(infoValidHolder);
         payByCard.successMessage();
+    }
+
+    @Test
+    void shouldUseDeclinedCard() {
+        var infoHolder = DataHelper.getDeclinedUser();
+        payByCard.setUp(infoHolder);
+        payByCard.errorMessage();
     }
 }
