@@ -17,6 +17,7 @@ public class PayByCard {
     private SelenideElement cvc = $$(".input__control").last();
     private SelenideElement buttonCont = $$("button").find(text("Продолжить"));
     private ElementsCollection message = $$(".notification__content");
+    private ElementsCollection subs = $$(".input__sub");
 
     public PayByCard() {
         $$("h3").find(text("Оплата по карте")).shouldBe(visible);
@@ -45,5 +46,27 @@ public class PayByCard {
         $$(".notification__closer").last().click();
         message.last().shouldBe(hidden);
         message.first().shouldBe(hidden);
+    }
+
+    public void subtitles() {
+        subs.first().shouldBe(visible).shouldHave(text("Неверный формат"));
+        subs.get(1).shouldBe(visible).shouldHave(text("Неверный формат"));
+        subs.get(2).shouldBe(visible).shouldHave(text("Неверный формат"));
+        subs.get(3).shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+        subs.last().shouldBe(visible).shouldHave(text("Неверный формат"));
+    }
+
+    public void subWrongFormat() {
+        subs.first().shouldBe(visible).shouldHave(text("Неверный формат"));
+    }
+
+    public void setUpCardNumber(String number, String digit) {
+        cardNumber.setValue(number + digit);
+        cardNumber.shouldHave(value(number));
+    }
+
+    public void setUpCardNumberSymbol(String number, String digit) {
+        cardNumber.setValue(number + digit);
+        cardNumber.shouldHave(value(digit));
     }
 }

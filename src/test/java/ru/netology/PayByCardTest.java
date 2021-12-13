@@ -34,23 +34,50 @@ public class PayByCardTest {
 
     @Test
     void shouldUseApprovedCard() {
-        var infoValidHolder = DataHelper.getValidUser();
+        var infoValidHolder = DataHelper.Registration.getValidUser();
         payByCard.setUp(infoValidHolder);
         payByCard.successMessage();
     }
 
     @Test
     void shouldUseDeclinedCard() {
-        var infoHolder = DataHelper.getDeclinedUser();
+        var infoHolder = DataHelper.Registration.getDeclinedUser();
         payByCard.setUp(infoHolder);
         payByCard.errorMessage();
     }
 
     @Test
-    void shouldUseAnyCardNumber () {
-        var infoHolderAnyCardNumber = new DataHelper.AuthInfo(DataHelper.getCVC(),DataHelper.getHolder(),
-                DataHelper.getMonth(),DataHelper.getRandomCardNumber(),DataHelper.getYearFutureInPeriod());
+    void shouldEmptyUser() {
+        var infoEmptyUser = DataHelper.Registration.getEmptyUser();
+        payByCard.setUp(infoEmptyUser);
+        payByCard.subtitles();
+    }
+
+    @Test
+    void shouldUseAnyCardNumber() {
+        var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         payByCard.setUp(infoHolderAnyCardNumber);
         payByCard.errorMessage();
+    }
+
+    @Test
+    void shouldUseCardWithPartNumber() {
+        var infoHolder = DataHelper.Registration.getPartCardNumber();
+        payByCard.setUp(infoHolder);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseMoreDigitsInCardNumber() {
+        var cardNumber = DataHelper.getRandomCardNumber();
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpCardNumber(cardNumber, digit);
+    }
+
+    @Test
+    void shouldUseCardNumberWithoutDigit() {
+        var cardNumber = DataHelper.getSymbolString(16);
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpCardNumberSymbol(cardNumber, digit);
     }
 }

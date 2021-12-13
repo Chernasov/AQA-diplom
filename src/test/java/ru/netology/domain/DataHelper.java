@@ -4,8 +4,10 @@ import com.github.javafaker.Faker;
 import lombok.Data;
 import lombok.Value;
 
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class DataHelper {
     private static final Faker faker = new Faker();
@@ -14,6 +16,7 @@ public class DataHelper {
     }
 
     @Value
+    @Data
     public static class AuthInfo {
         String cvc;
         String holder;
@@ -58,11 +61,54 @@ public class DataHelper {
         return faker.numerify("###");
     }
 
-    public static AuthInfo getValidUser() {
-        return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+    public static String getEmptyField() {
+        return "";
     }
 
-    public static AuthInfo getDeclinedUser() {
-        return new AuthInfo(getCVC(), getHolder(), getMonth(), getDeclinedCardNumber(), getYearFutureInPeriod());
+    public static String getOneDigit() {
+        return faker.numerify("#");
+    }
+
+    public static String getSymbolString(int length) {
+        byte[] array = new byte[256];
+        new Random().nextBytes(array);
+        String randomString = new String(array, Charset.forName("UTF-8"));
+        StringBuffer r = new StringBuffer();
+        for (int i = 0; i < randomString.length(); i++) {
+            char ch = randomString.charAt(i);
+            if (((ch >= ' ' && ch <= '/')
+                    || (ch >= ':' && ch <= '~')
+            )
+                    && (length > 0)) {
+                r.append(ch);
+                length--;
+            }
+        }
+        return r.toString();
+    }
+
+    public static class Registration {
+        private Registration() {
+        }
+
+        public static AuthInfo getValidUser() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getDeclinedUser() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getDeclinedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getAnyCardNumberUser() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getRandomCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getEmptyUser() {
+            return new AuthInfo(getEmptyField(), getEmptyField(), getEmptyField(), getEmptyField(), getEmptyField());
+        }
+
+        public static AuthInfo getPartCardNumber() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getOneDigit(), getYearFutureInPeriod());
+        }
     }
 }
