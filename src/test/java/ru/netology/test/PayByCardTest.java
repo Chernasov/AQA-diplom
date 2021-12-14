@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
 import ru.netology.page.MainPage;
-import ru.netology.page.PayByCard;
 
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
@@ -42,17 +41,17 @@ public class PayByCardTest {
     @Test
     void shouldUseDeclinedCard() {
         var payByCard = mainPage.payByCard();
-        var infoHolder = DataHelper.Registration.getDeclinedUser();
-        payByCard.setUp(infoHolder);
+        var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
+        payByCard.setUp(infoHolderDeclinedCard);
         payByCard.errorMessage();
     }
 
     @Test
-    void shouldEmptyUser() {
+    void shouldUseEmptyCardNumber() {
         var payByCard = mainPage.payByCard();
-        var infoEmptyUser = DataHelper.Registration.getEmptyUser();
-        payByCard.setUp(infoEmptyUser);
-        payByCard.subtitles();
+        var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
+        payByCard.setUp(infoEmptyCardNumber);
+        payByCard.subWrongFormat();
     }
 
     @Test

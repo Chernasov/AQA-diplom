@@ -20,8 +20,8 @@ public class PayByCard {
     private SelenideElement buttonCont = $$("button").find(text("Продолжить"));
     private SelenideElement messageSuccess = $(".icon_name_ok");
     private SelenideElement messageError = $(".icon_name_error");
-//    private ElementsCollection message = $$(".notification__content");
-    private ElementsCollection subs = $$(".input__sub");
+    private SelenideElement subtitles = $(".input__sub");
+    private ElementsCollection closer = $$(".notification__closer"); // закрытие сообщения не уникально
 
     public PayByCard() {
         $$("h3").find(text("Оплата по карте")).shouldBe(visible);
@@ -38,28 +38,20 @@ public class PayByCard {
 
     public void successMessage() {
         messageSuccess.shouldBe(visible, Duration.ofSeconds(15));
-        $$(".notification__closer").first().click();
+        closer.first().click();
         messageSuccess.shouldBe(hidden);
         messageError.shouldBe(hidden);
     }
 
     public void errorMessage() {
         messageError.shouldBe(visible, Duration.ofSeconds(15));
-        $$(".notification__closer").last().click();
+        closer.last().click();
         messageError.shouldBe(hidden);
         messageSuccess.shouldBe(hidden);
     }
 
-    public void subtitles() {
-        subs.first().shouldBe(visible).shouldHave(text("Неверный формат"));
-        subs.get(1).shouldBe(visible).shouldHave(text("Неверный формат"));
-        subs.get(2).shouldBe(visible).shouldHave(text("Неверный формат"));
-        subs.get(3).shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
-        subs.last().shouldBe(visible).shouldHave(text("Неверный формат"));
-    }
-
     public void subWrongFormat() {
-        subs.first().shouldBe(visible).shouldHave(text("Неверный формат"));
+        subtitles.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
     public void setUpCardNumber(String number, String digit) {

@@ -103,8 +103,8 @@ public class DataHelper {
             return new AuthInfo(getCVC(), getHolder(), getMonth(), getRandomCardNumber(), getYearFutureInPeriod());
         }
 
-        public static AuthInfo getEmptyUser() {
-            return new AuthInfo(getEmptyField(), getEmptyField(), getEmptyField(), getEmptyField(), getEmptyField());
+        public static AuthInfo getEmptyCardNumber() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getEmptyField(), getYearFutureInPeriod());
         }
 
         public static AuthInfo getPartCardNumber() {
