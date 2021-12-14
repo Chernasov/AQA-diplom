@@ -89,7 +89,7 @@ public class PayByCardTest {
     @Test
     void shouldUseMonthDoubleZero() {
         var payByCard = mainPage.payByCard();
-        var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZero();
+        var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         payByCard.setUp(infoHolderDoubleZeroMonth);
         payByCard.subWrongPeriod();
     }
@@ -97,7 +97,7 @@ public class PayByCardTest {
     @Test
     void shouldUseMonthOver() {
         var payByCard = mainPage.payByCard();
-        var infoHolder13Month = DataHelper.Registration.getMonthOver();
+        var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         payByCard.setUp(infoHolder13Month);
         payByCard.subWrongPeriod();
     }
@@ -105,7 +105,7 @@ public class PayByCardTest {
     @Test
     void shouldUseEmptyMonthField() {
         var payByCard = mainPage.payByCard();
-        var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthField();
+        var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         payByCard.setUp(infoEmptyMonthField);
         payByCard.subWrongFormat();
     }
@@ -113,7 +113,7 @@ public class PayByCardTest {
     @Test
     void shouldUseCardWithOneDigitMonth() {
         var payByCard = mainPage.payByCard();
-        var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonth();
+        var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         payByCard.setUp(infoHolderOneDigitMonth);
         payByCard.subWrongFormat();
     }
@@ -132,6 +132,62 @@ public class PayByCardTest {
         var month = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
         payByCard.setUpMonthFieldWithSymbol(month, digit);
+    }
+
+    @Test
+    void shouldUsePastYear() {
+        var payByCard = mainPage.payByCard();
+        var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
+        payByCard.setUp(infoHolderPastYear);
+        payByCard.subExpired();
+    }
+
+    @Test
+    void shouldUseFutureYearOver() {
+        var payByCard = mainPage.payByCard();
+        var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
+        payByCard.setUp(infoHolderFutureYear);
+        payByCard.subWrongPeriod();
+    }
+
+    @Test
+    void shouldUseEmptyYearField() {
+        var payByCard = mainPage.payByCard();
+        var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
+        payByCard.setUp(infoEmptyYearField);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseCardWithOneDigitYear() {
+        var payByCard = mainPage.payByCard();
+        var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
+        payByCard.setUp(infoHolderOneDigitYear);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseMoreDigitsInYear() {
+        var payByCard = mainPage.payByCard();
+        var year = DataHelper.getYearFutureInPeriod();
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpYearField(year, digit);
+    }
+
+    @Test
+    void shouldUseYearWithoutDigit() {
+        var payByCard = mainPage.payByCard();
+        var year = DataHelper.getSymbolString(2);
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpYearFieldWithSymbol(year, digit);
+    }
+
+    @Test
+    void shouldUseCardWithCurrentPeriod() {
+        var payByCard = mainPage.payByCard();
+        var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
+        payByCard.setUp(infoCardWithCurrentPeriod);
+        payByCard.successMessage();
     }
 
 }

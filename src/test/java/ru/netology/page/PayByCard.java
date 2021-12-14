@@ -77,4 +77,19 @@ public class PayByCard {
         monthField.setValue(month + digit);
         monthField.shouldHave(value(digit));
     }
+
+    public void subExpired() {
+        subtitles.shouldBe(visible).shouldHave(text("Истёк срок действия карты"));
+    }
+
+    public void setUpYearField(String year, String digit) {
+        yearField.setValue(year + digit);
+        yearField.shouldHave(value(year));
+    }
+
+    public void setUpYearFieldWithSymbol(String year, String digit) {
+        yearField.setValue(year + digit);
+        yearField.shouldHave(value(digit));
+    }
+
 }
