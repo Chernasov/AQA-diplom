@@ -8,10 +8,12 @@ import org.checkerframework.checker.units.qual.A;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Random;
 
 public class DataHelper {
     private static final Faker faker = new Faker();
+    private static final Faker fakerRU = new Faker(new Locale("ru"));
 
     private DataHelper() {
     }
@@ -72,6 +74,10 @@ public class DataHelper {
 
     public static String getHolder() {
         return faker.name().name();
+    }
+
+    public static String getCyrillicHolder() {
+        return fakerRU.name().firstName() + " " + fakerRU.name().lastName();
     }
 
     public static String getCVC() {
@@ -162,6 +168,18 @@ public class DataHelper {
 
         public static AuthInfo getCardWithCurrentPeriod() {
             return new AuthInfo(getCVC(), getHolder(), getCurrentMonth(), getApprovedCardNumber(), getCurrentYear());
+        }
+
+        public static AuthInfo getCyrillicHolderCard() {
+            return new AuthInfo(getCVC(), getCyrillicHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getSymbolHolderCard() {
+            return new AuthInfo(getCVC(), getSymbolString(8), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getEmptyHolderFieldCard() {
+            return new AuthInfo(getCVC(), getEmptyField(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
     }
 }

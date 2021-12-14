@@ -190,4 +190,28 @@ public class PayByCardTest {
         payByCard.successMessage();
     }
 
+    @Test
+    void shouldUseCardWithCyrillicHolder() {
+        var payByCard = mainPage.payByCard();
+        var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
+        payByCard.setUp(infoCyrillicHolder);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseCardWithSymbolHolder() {
+        var payByCard = mainPage.payByCard();
+        var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
+        payByCard.setUp(infoSymbolHolder);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseEmptyHolderField() {
+        var payByCard = mainPage.payByCard();
+        var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
+        payByCard.setUp(infoEmptyHolderField);
+        payByCard.subNecessarilyField();
+    }
+
 }

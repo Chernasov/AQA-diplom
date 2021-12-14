@@ -54,6 +54,10 @@ public class PayByCard {
         subtitles.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
+    public void subNecessarilyField() {
+        subtitles.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
+
     public void setUpCardNumberField(String number, String digit) {
         cardNumberField.setValue(number + digit);
         cardNumberField.shouldHave(value(number));
@@ -91,5 +95,7 @@ public class PayByCard {
         yearField.setValue(year + digit);
         yearField.shouldHave(value(digit));
     }
+
+
 
 }
