@@ -75,7 +75,7 @@ public class PayByCardTest {
         var payByCard = mainPage.payByCard();
         var cardNumber = DataHelper.getRandomCardNumber();
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpCardNumber(cardNumber, digit);
+        payByCard.setUpCardNumberField(cardNumber, digit);
     }
 
     @Test
@@ -83,6 +83,55 @@ public class PayByCardTest {
         var payByCard = mainPage.payByCard();
         var cardNumber = DataHelper.getSymbolString(16);
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpCardNumberSymbol(cardNumber, digit);
+        payByCard.setUpCardNumberFieldWithSymbol(cardNumber, digit);
     }
+
+    @Test
+    void shouldUseMonthDoubleZero() {
+        var payByCard = mainPage.payByCard();
+        var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZero();
+        payByCard.setUp(infoHolderDoubleZeroMonth);
+        payByCard.subWrongPeriod();
+    }
+
+    @Test
+    void shouldUseMonthOver() {
+        var payByCard = mainPage.payByCard();
+        var infoHolder13Month = DataHelper.Registration.getMonthOver();
+        payByCard.setUp(infoHolder13Month);
+        payByCard.subWrongPeriod();
+    }
+
+    @Test
+    void shouldUseEmptyMonthField() {
+        var payByCard = mainPage.payByCard();
+        var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthField();
+        payByCard.setUp(infoEmptyMonthField);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseCardWithOneDigitMonth() {
+        var payByCard = mainPage.payByCard();
+        var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonth();
+        payByCard.setUp(infoHolderOneDigitMonth);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseMoreDigitsInMonth() {
+        var payByCard = mainPage.payByCard();
+        var month = DataHelper.getMonth();
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpMonthField(month, digit);
+    }
+
+    @Test
+    void shouldUseMonthWithoutDigit() {
+        var payByCard = mainPage.payByCard();
+        var month = DataHelper.getSymbolString(2);
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpMonthFieldWithSymbol(month, digit);
+    }
+
 }

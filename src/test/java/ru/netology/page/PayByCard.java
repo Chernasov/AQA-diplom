@@ -54,13 +54,27 @@ public class PayByCard {
         subtitles.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-    public void setUpCardNumber(String number, String digit) {
+    public void setUpCardNumberField(String number, String digit) {
         cardNumberField.setValue(number + digit);
         cardNumberField.shouldHave(value(number));
     }
 
-    public void setUpCardNumberSymbol(String number, String digit) {
+    public void setUpCardNumberFieldWithSymbol(String number, String digit) {
         cardNumberField.setValue(number + digit);
         cardNumberField.shouldHave(value(digit));
+    }
+
+    public void subWrongPeriod() {
+        subtitles.shouldBe(visible).shouldHave(text("Неверно указан срок действия карты"));
+    }
+
+    public void setUpMonthField(String month, String digit) {
+        monthField.setValue(month + digit);
+        monthField.shouldHave(value(month));
+    }
+
+    public void setUpMonthFieldWithSymbol(String month, String digit) {
+        monthField.setValue(month + digit);
+        monthField.shouldHave(value(digit));
     }
 }

@@ -41,6 +41,14 @@ public class DataHelper {
         return LocalDate.now().plusMonths(faker.number().numberBetween(1, 13)).format(DateTimeFormatter.ofPattern("MM"));
     }
 
+    public static String getDoubleZero() {
+        return "00";
+    }
+
+    public static String get13Month() {
+        return "13";
+    }
+
     public static String getYearFutureOverPeriod() {
         return LocalDate.now().plusYears(faker.number().numberBetween(10, 16)).format(DateTimeFormatter.ofPattern("yy"));
     }
@@ -109,6 +117,22 @@ public class DataHelper {
 
         public static AuthInfo getPartCardNumber() {
             return new AuthInfo(getCVC(), getHolder(), getMonth(), getOneDigit(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getMonthDoubleZero() {
+            return new AuthInfo(getCVC(), getHolder(), getDoubleZero(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getMonthOver() {
+            return new AuthInfo(getCVC(), getHolder(), get13Month(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getEmptyMonthField() {
+            return new AuthInfo(getCVC(), getHolder(), getEmptyField(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getOneDigitMonth() {
+            return new AuthInfo(getCVC(), getHolder(), getOneDigit(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
     }
 }
