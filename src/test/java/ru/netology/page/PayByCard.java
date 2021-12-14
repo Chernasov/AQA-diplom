@@ -2,21 +2,25 @@ package ru.netology.page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.domain.DataHelper;
+import ru.netology.data.DataHelper;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class PayByCard {
-    private SelenideElement cardNumber = $$(".input__control").first();
-    private SelenideElement month = $$(".input__control").get(1);
-    private SelenideElement year = $$(".input__control").get(2);
-    private SelenideElement holder = $$(".input__control").get(3);
-    private SelenideElement cvc = $$(".input__control").last();
+    private SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
+    private SelenideElement monthField = $("[placeholder='08']");
+    private SelenideElement yearField = $("[placeholder='22']");;
+    private SelenideElement holderField = $(byXpath("//span[text()='Владелец']/..//input"));
+    private SelenideElement cvcField = $("[placeholder='999']");;
     private SelenideElement buttonCont = $$("button").find(text("Продолжить"));
-    private ElementsCollection message = $$(".notification__content");
+    private SelenideElement messageSuccess = $(".icon_name_ok");
+    private SelenideElement messageError = $(".icon_name_error");
+//    private ElementsCollection message = $$(".notification__content");
     private ElementsCollection subs = $$(".input__sub");
 
     public PayByCard() {
@@ -24,28 +28,26 @@ public class PayByCard {
     }
 
     public void setUp(DataHelper.AuthInfo info) {
-        cardNumber.setValue(info.getNumber());
-        month.setValue(info.getMonth());
-        year.setValue(info.getYear());
-        holder.setValue(info.getHolder());
-        cvc.setValue(info.getCvc());
+        cardNumberField.setValue(info.getNumber());
+        monthField.setValue(info.getMonth());
+        yearField.setValue(info.getYear());
+        holderField.setValue(info.getHolder());
+        cvcField.setValue(info.getCvc());
         buttonCont.click();
     }
 
     public void successMessage() {
-        message.first().shouldBe(visible, Duration.ofSeconds(15));
-        message.first().shouldHave(text("Операция одобрена Банком."));
+        messageSuccess.shouldBe(visible, Duration.ofSeconds(15));
         $$(".notification__closer").first().click();
-        message.first().shouldBe(hidden);
-        message.last().shouldBe(hidden);
+        messageSuccess.shouldBe(hidden);
+        messageError.shouldBe(hidden);
     }
 
     public void errorMessage() {
-        message.last().shouldBe(visible, Duration.ofSeconds(15));
-        message.last().shouldHave(text("Ошибка! Банк отказал в проведении операции."));
+        messageError.shouldBe(visible, Duration.ofSeconds(15));
         $$(".notification__closer").last().click();
-        message.last().shouldBe(hidden);
-        message.first().shouldBe(hidden);
+        messageError.shouldBe(hidden);
+        messageSuccess.shouldBe(hidden);
     }
 
     public void subtitles() {
@@ -61,12 +63,12 @@ public class PayByCard {
     }
 
     public void setUpCardNumber(String number, String digit) {
-        cardNumber.setValue(number + digit);
-        cardNumber.shouldHave(value(number));
+        cardNumberField.setValue(number + digit);
+        cardNumberField.shouldHave(value(number));
     }
 
     public void setUpCardNumberSymbol(String number, String digit) {
-        cardNumber.setValue(number + digit);
-        cardNumber.shouldHave(value(digit));
+        cardNumberField.setValue(number + digit);
+        cardNumberField.shouldHave(value(digit));
     }
 }
