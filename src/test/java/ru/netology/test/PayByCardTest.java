@@ -214,4 +214,35 @@ public class PayByCardTest {
         payByCard.subNecessarilyField();
     }
 
+    @Test
+    void shouldUseEmptyCvcField() {
+        var payByCard = mainPage.payByCard();
+        var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
+        payByCard.setUp(infoEmptyCvcField);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseCardWithOneDigitCvc() {
+        var payByCard = mainPage.payByCard();
+        var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
+        payByCard.setUp(infoHolderOneDigitCvc);
+        payByCard.subWrongFormat();
+    }
+
+    @Test
+    void shouldUseMoreDigitsInCvc() {
+        var payByCard = mainPage.payByCard();
+        var cvc = DataHelper.getCVC();
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpCvcField(cvc, digit);
+    }
+
+    @Test
+    void shouldUseCvcWithoutDigit() {
+        var payByCard = mainPage.payByCard();
+        var cvc = DataHelper.getSymbolString(3);
+        var digit = DataHelper.getOneDigit();
+        payByCard.setUpCvcFieldWithSymbol(cvc, digit);
+    }
 }

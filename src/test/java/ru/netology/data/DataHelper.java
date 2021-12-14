@@ -181,5 +181,13 @@ public class DataHelper {
         public static AuthInfo getEmptyHolderFieldCard() {
             return new AuthInfo(getCVC(), getEmptyField(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
+
+        public static AuthInfo getEmptyCvcFieldCard() {
+            return new AuthInfo(getEmptyField(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getOneDigitCvcCard() {
+            return new AuthInfo(getOneDigit(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
     }
 }

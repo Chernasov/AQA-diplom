@@ -96,6 +96,13 @@ public class PayByCard {
         yearField.shouldHave(value(digit));
     }
 
+    public void setUpCvcField(String cvc, String digit) {
+        cvcField.setValue(cvc + digit);
+        cvcField.shouldHave(value(cvc));
+    }
 
-
+    public void setUpCvcFieldWithSymbol(String cvc, String digit) {
+        yearField.setValue(cvc + digit);
+        yearField.shouldHave(value(digit));
+    }
 }
