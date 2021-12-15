@@ -3,7 +3,6 @@ package ru.netology.data;
 import com.github.javafaker.Faker;
 import lombok.Data;
 import lombok.Value;
-import org.checkerframework.checker.units.qual.A;
 
 import java.nio.charset.Charset;
 import java.time.LocalDate;

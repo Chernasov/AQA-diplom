@@ -105,4 +105,9 @@ public class PayByCard {
         yearField.setValue(cvc + digit);
         yearField.shouldHave(value(digit));
     }
+
+    public BuyOnCredit buyOnCredit() {
+        $(byXpath("//span[text()='Купить в кредит']")).click();
+        return new BuyOnCredit();
+    }
 }

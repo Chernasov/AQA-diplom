@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
 import ru.netology.page.MainPage;
 
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PayByCardTest {
@@ -244,5 +243,11 @@ public class PayByCardTest {
         var cvc = DataHelper.getSymbolString(3);
         var digit = DataHelper.getOneDigit();
         payByCard.setUpCvcFieldWithSymbol(cvc, digit);
+    }
+
+    @Test
+    void shouldSwithByCredit() {
+        var payByCard = mainPage.payByCard();
+        payByCard.buyOnCredit();
     }
 }
