@@ -31,8 +31,16 @@ public class DataHelper {
         return "1111 2222 3333 4444";
     }
 
+    public static String getApprovedStatus() {
+        return "APPROVED";
+    }
+
     public static String getDeclinedCardNumber() {
         return "5555 6666 7777 8888";
+    }
+
+    public static String getDeclinedStatus() {
+        return "DECLINED";
     }
 
     public static String getRandomCardNumber() {
