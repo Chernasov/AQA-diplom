@@ -8,10 +8,9 @@ import ru.netology.page.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static ru.netology.data.DBaseQueries.getOrder;
-import static ru.netology.data.DBaseQueries.getPayment;
+import static ru.netology.data.DBaseQueries.*;
 
-public class PayByCardTest {
+public class BuyOnCreditTest {
     private MainPage mainPage = new MainPage();
 
     @BeforeAll
@@ -31,229 +30,229 @@ public class PayByCardTest {
 
     @Test
     void shouldUseApprovedCard() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoValidHolder = DataHelper.Registration.getValidUser();
-        payByCard.setUp(infoValidHolder);
-        payByCard.successMessage();
-        assertEquals(getOrder().getPayment_id(), getPayment().getTransaction_id());
-        assertEquals(DataHelper.getApprovedStatus(), getPayment().getStatus());
+        buyOnCredit.setUp(infoValidHolder);
+        buyOnCredit.successMessage();
+        assertEquals(getOrder().getPayment_id(), getCredit().getBank_id());
+        assertEquals(DataHelper.getApprovedStatus(), getCredit().getStatus());
     }
 
     @Test
     void shouldUseDeclinedCard() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
-        payByCard.setUp(infoHolderDeclinedCard);
-        payByCard.errorMessage();
-        assertEquals(getOrder().getPayment_id(), getPayment().getTransaction_id());
-        assertEquals(DataHelper.getDeclinedStatus(), getPayment().getStatus());
+        buyOnCredit.setUp(infoHolderDeclinedCard);
+        buyOnCredit.errorMessage();
+        assertEquals(getOrder().getPayment_id(), getCredit().getBank_id());
+        assertEquals(DataHelper.getDeclinedStatus(), getCredit().getStatus());
     }
 
     @Test
     void shouldUseEmptyCardNumber() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
-        payByCard.setUp(infoEmptyCardNumber);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoEmptyCardNumber);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseAnyCardNumber() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
-        payByCard.setUp(infoHolderAnyCardNumber);
-        payByCard.errorMessage();
+        buyOnCredit.setUp(infoHolderAnyCardNumber);
+        buyOnCredit.errorMessage();
     }
 
     @Test
     void shouldUseCardWithPartNumber() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolder = DataHelper.Registration.getPartCardNumber();
-        payByCard.setUp(infoHolder);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoHolder);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseMoreDigitsInCardNumber() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var cardNumber = DataHelper.getRandomCardNumber();
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpCardNumberField(cardNumber, digit);
+        buyOnCredit.setUpCardNumberField(cardNumber, digit);
     }
 
     @Test
     void shouldUseCardNumberWithoutDigit() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var cardNumber = DataHelper.getSymbolString(16);
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpCardNumberFieldWithSymbol(cardNumber, digit);
+        buyOnCredit.setUpCardNumberFieldWithSymbol(cardNumber, digit);
     }
 
     @Test
     void shouldUseMonthDoubleZero() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
-        payByCard.setUp(infoHolderDoubleZeroMonth);
-        payByCard.subWrongPeriod();
+        buyOnCredit.setUp(infoHolderDoubleZeroMonth);
+        buyOnCredit.subWrongPeriod();
     }
 
     @Test
     void shouldUseMonthOver() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
-        payByCard.setUp(infoHolder13Month);
-        payByCard.subWrongPeriod();
+        buyOnCredit.setUp(infoHolder13Month);
+        buyOnCredit.subWrongPeriod();
     }
 
     @Test
     void shouldUseEmptyMonthField() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
-        payByCard.setUp(infoEmptyMonthField);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoEmptyMonthField);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseCardWithOneDigitMonth() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
-        payByCard.setUp(infoHolderOneDigitMonth);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoHolderOneDigitMonth);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseMoreDigitsInMonth() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var month = DataHelper.getMonth();
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpMonthField(month, digit);
+        buyOnCredit.setUpMonthField(month, digit);
     }
 
     @Test
     void shouldUseMonthWithoutDigit() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var month = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpMonthFieldWithSymbol(month, digit);
+        buyOnCredit.setUpMonthFieldWithSymbol(month, digit);
     }
 
     @Test
     void shouldUsePastYear() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
-        payByCard.setUp(infoHolderPastYear);
-        payByCard.subExpired();
+        buyOnCredit.setUp(infoHolderPastYear);
+        buyOnCredit.subExpired();
     }
 
     @Test
     void shouldUseFutureYearOver() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
-        payByCard.setUp(infoHolderFutureYear);
-        payByCard.subWrongPeriod();
+        buyOnCredit.setUp(infoHolderFutureYear);
+        buyOnCredit.subWrongPeriod();
     }
 
     @Test
     void shouldUseEmptyYearField() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
-        payByCard.setUp(infoEmptyYearField);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoEmptyYearField);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseCardWithOneDigitYear() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
-        payByCard.setUp(infoHolderOneDigitYear);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoHolderOneDigitYear);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseMoreDigitsInYear() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var year = DataHelper.getYearFutureInPeriod();
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpYearField(year, digit);
+        buyOnCredit.setUpYearField(year, digit);
     }
 
     @Test
     void shouldUseYearWithoutDigit() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var year = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpYearFieldWithSymbol(year, digit);
+        buyOnCredit.setUpYearFieldWithSymbol(year, digit);
     }
 
     @Test
     void shouldUseCardWithCurrentPeriod() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
-        payByCard.setUp(infoCardWithCurrentPeriod);
-        payByCard.successMessage();
-        assertEquals(getOrder().getPayment_id(), getPayment().getTransaction_id());
-        assertEquals(DataHelper.getApprovedStatus(), getPayment().getStatus());
+        buyOnCredit.setUp(infoCardWithCurrentPeriod);
+        buyOnCredit.successMessage();
+        assertEquals(getOrder().getPayment_id(), getCredit().getBank_id());
+        assertEquals(DataHelper.getApprovedStatus(), getCredit().getStatus());
     }
 
     @Test
     void shouldUseCardWithCyrillicHolder() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
-        payByCard.setUp(infoCyrillicHolder);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoCyrillicHolder);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseCardWithSymbolHolder() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
-        payByCard.setUp(infoSymbolHolder);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoSymbolHolder);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseEmptyHolderField() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
-        payByCard.setUp(infoEmptyHolderField);
-        payByCard.subNecessarilyField();
+        buyOnCredit.setUp(infoEmptyHolderField);
+        buyOnCredit.subNecessarilyField();
     }
 
     @Test
     void shouldUseEmptyCvcField() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
-        payByCard.setUp(infoEmptyCvcField);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoEmptyCvcField);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseCardWithOneDigitCvc() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
-        payByCard.setUp(infoHolderOneDigitCvc);
-        payByCard.subWrongFormat();
+        buyOnCredit.setUp(infoHolderOneDigitCvc);
+        buyOnCredit.subWrongFormat();
     }
 
     @Test
     void shouldUseMoreDigitsInCvc() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var cvc = DataHelper.getCVC();
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpCvcField(cvc, digit);
+        buyOnCredit.setUpCvcField(cvc, digit);
     }
 
     @Test
     void shouldUseCvcWithoutDigit() {
-        var payByCard = mainPage.payByCard();
+        var buyOnCredit = mainPage.buyOnCredit();
         var cvc = DataHelper.getSymbolString(3);
         var digit = DataHelper.getOneDigit();
-        payByCard.setUpCvcFieldWithSymbol(cvc, digit);
+        buyOnCredit.setUpCvcFieldWithSymbol(cvc, digit);
     }
 
     @Test
     void shouldSwithByCredit() {
-        var payByCard = mainPage.payByCard();
-        payByCard.buyOnCredit();
+        var buyOnCredit = mainPage.buyOnCredit();
+        buyOnCredit.payByCard();
     }
 }
