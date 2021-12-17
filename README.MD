@@ -4,9 +4,6 @@
 4.	В *nix системах запуск `./gradlew clean test -Dselenide.headless=true`  
     В Windows запуск `gradlew clean test -Dselenide.headless=true`
 5.  `gradlew allureReport` - генерация отчета после прохождения
-    тестов  
-    или  
-    `gradlew allureServe` - генерация отчета и автоматическое
-    открытие в браузере по умолчанию
+    тестов
 6. Остановить SUT
 7. Остановить БД, выполнить `docker-compose down`
