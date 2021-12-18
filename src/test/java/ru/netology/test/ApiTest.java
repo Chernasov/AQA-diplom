@@ -9,6 +9,8 @@ import ru.netology.data.DataHelper;
 import ru.netology.page.ApiPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.netology.data.DBaseQueries.*;
+import static ru.netology.data.DBaseQueries.getCredit;
 
 public class ApiTest {
     private ApiPage api = new ApiPage();

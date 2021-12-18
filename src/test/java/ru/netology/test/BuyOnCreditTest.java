@@ -34,7 +34,7 @@ public class BuyOnCreditTest {
         var infoValidHolder = DataHelper.Registration.getValidUser();
         buyOnCredit.setUp(infoValidHolder);
         buyOnCredit.successMessage();
-        assertEquals(getOrder().getPayment_id(), getCredit().getBank_id());
+        assertEquals(getOrder().getCredit_id(), getCredit().getBank_id());
         assertEquals(DataHelper.getApprovedStatus(), getCredit().getStatus());
     }
 
@@ -44,7 +44,7 @@ public class BuyOnCreditTest {
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
         buyOnCredit.setUp(infoHolderDeclinedCard);
         buyOnCredit.errorMessage();
-        assertEquals(getOrder().getPayment_id(), getCredit().getBank_id());
+        assertEquals(getOrder().getCredit_id(), getCredit().getBank_id());
         assertEquals(DataHelper.getDeclinedStatus(), getCredit().getStatus());
     }
 
@@ -190,7 +190,7 @@ public class BuyOnCreditTest {
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
         buyOnCredit.setUp(infoCardWithCurrentPeriod);
         buyOnCredit.successMessage();
-        assertEquals(getOrder().getPayment_id(), getCredit().getBank_id());
+        assertEquals(getOrder().getCredit_id(), getCredit().getBank_id());
         assertEquals(DataHelper.getApprovedStatus(), getCredit().getStatus());
     }
 
