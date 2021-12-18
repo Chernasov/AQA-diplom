@@ -197,4 +197,18 @@ public class DataHelper {
             return new AuthInfo(getOneDigit(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
     }
+
+    @Value
+    @Data
+    public static class PathForApi {
+        String path;
+    }
+
+    public static String getPayPath() {
+        return "/api/v1/pay";
+    }
+
+    public static String getCreditPath() {
+        return "/api/v1/credit";
+    }
 }
