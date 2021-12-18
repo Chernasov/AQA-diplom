@@ -3,6 +3,7 @@ package ru.netology.data;
 import com.github.javafaker.Faker;
 import lombok.Data;
 import lombok.Value;
+import org.checkerframework.checker.units.qual.A;
 
 import java.nio.charset.Charset;
 import java.time.LocalDate;
@@ -141,6 +142,14 @@ public class DataHelper {
             return new AuthInfo(getCVC(), getHolder(), getMonth(), getOneDigit(), getYearFutureInPeriod());
         }
 
+        public static AuthInfo getMoreDigitsInCardNumber() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getRandomCardNumber()+getOneDigit(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getCardNumberWithoutDigit() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getSymbolString(16), getYearFutureInPeriod());
+        }
+
         public static AuthInfo getMonthDoubleZeroCard() {
             return new AuthInfo(getCVC(), getHolder(), getDoubleZero(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
@@ -157,6 +166,14 @@ public class DataHelper {
             return new AuthInfo(getCVC(), getHolder(), getOneDigit(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
 
+        public static AuthInfo getMoreDigitsInMonth() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth()+getOneDigit(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getMonthWithoutDigit() {
+            return new AuthInfo(getCVC(), getHolder(), getSymbolString(2), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
         public static AuthInfo getPastYearCard() {
             return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearPast());
         }
@@ -171,6 +188,14 @@ public class DataHelper {
 
         public static AuthInfo getOneDigitYearCard() {
             return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getOneDigit());
+        }
+
+        public static AuthInfo getMoreDigitsInYearCard() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod()+getOneDigit());
+        }
+
+        public static AuthInfo getYearWithoutDigitCard() {
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getSymbolString(2));
         }
 
         public static AuthInfo getCardWithCurrentPeriod() {
@@ -195,6 +220,14 @@ public class DataHelper {
 
         public static AuthInfo getOneDigitCvcCard() {
             return new AuthInfo(getOneDigit(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getMoreDigitsInCvcCard() {
+            return new AuthInfo(getCVC()+getOneDigit(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+        }
+
+        public static AuthInfo getCvcWithoutDigitCard() {
+            return new AuthInfo(getSymbolString(3), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
     }
 

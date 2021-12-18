@@ -46,4 +46,17 @@ public class ApiPage {
         return status;
     }
 
+    public int sendPostStatus400(DataHelper.AuthInfo holder, String path) {
+        int status =
+                given()
+                        .spec(requestSpec)
+                        .body(holder)
+                        .when()
+                        .post(path)
+                        .then()
+                        .statusCode(400)
+                        .extract()
+                        .path("status");
+        return status;
+    }
 }
