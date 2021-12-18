@@ -143,7 +143,7 @@ public class DataHelper {
         }
 
         public static AuthInfo getMoreDigitsInCardNumber() {
-            return new AuthInfo(getCVC(), getHolder(), getMonth(), getRandomCardNumber()+getOneDigit(), getYearFutureInPeriod());
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getRandomCardNumber() + getOneDigit(), getYearFutureInPeriod());
         }
 
         public static AuthInfo getCardNumberWithoutDigit() {
@@ -167,7 +167,7 @@ public class DataHelper {
         }
 
         public static AuthInfo getMoreDigitsInMonth() {
-            return new AuthInfo(getCVC(), getHolder(), getMonth()+getOneDigit(), getApprovedCardNumber(), getYearFutureInPeriod());
+            return new AuthInfo(getCVC(), getHolder(), getMonth() + getOneDigit(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
 
         public static AuthInfo getMonthWithoutDigit() {
@@ -191,7 +191,7 @@ public class DataHelper {
         }
 
         public static AuthInfo getMoreDigitsInYearCard() {
-            return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod()+getOneDigit());
+            return new AuthInfo(getCVC(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod() + getOneDigit());
         }
 
         public static AuthInfo getYearWithoutDigitCard() {
@@ -223,7 +223,7 @@ public class DataHelper {
         }
 
         public static AuthInfo getMoreDigitsInCvcCard() {
-            return new AuthInfo(getCVC()+getOneDigit(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
+            return new AuthInfo(getCVC() + getOneDigit(), getHolder(), getMonth(), getApprovedCardNumber(), getYearFutureInPeriod());
         }
 
         public static AuthInfo getCvcWithoutDigitCard() {

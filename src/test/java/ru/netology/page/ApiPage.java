@@ -21,14 +21,14 @@ public class ApiPage {
     public String sendPostStatus200(DataHelper.AuthInfo holder, String path) {
         String status =
                 given()
-                    .spec(requestSpec)
-                    .body(holder)
-                .when()
-                    .post(path)
-                .then()
-                    .statusCode(200)
-                .extract()
-                    .path("status");
+                        .spec(requestSpec)
+                        .body(holder)
+                        .when()
+                        .post(path)
+                        .then()
+                        .statusCode(200)
+                        .extract()
+                        .path("status");
         return status;
     }
 

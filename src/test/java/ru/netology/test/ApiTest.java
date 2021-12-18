@@ -231,41 +231,216 @@ public class ApiTest {
     @Test
     void shouldUseApprovedCardForCredit() {
         var infoValidHolder = DataHelper.Registration.getValidUser();
-        var pathForPay = DataHelper.getCreditPath();
-        var response = api.sendPostStatus200(infoValidHolder, pathForPay);
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus200(infoValidHolder, pathForCredit);
         assertEquals(DataHelper.getApprovedStatus(), response);
     }
 
     @Test
     void shouldUseDeclinedCardForCredit() {
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
-        var pathForPay = DataHelper.getCreditPath();
-        var response = api.sendPostStatus200(infoHolderDeclinedCard, pathForPay);
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus200(infoHolderDeclinedCard, pathForCredit);
         assertEquals(DataHelper.getDeclinedStatus(), response);
     }
 
     @Test
     void shouldUseEmptyCardNumberForCredit() {
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
-        var pathForPay = DataHelper.getCreditPath();
-        var response = api.sendPostStatus500(infoEmptyCardNumber, pathForPay);
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoEmptyCardNumber, pathForCredit);
         assertEquals(500, response);
     }
 
     @Test
     void shouldUseAnyCardNumberForCredit() {
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
-        var pathForPay = DataHelper.getCreditPath();
-        var response = api.sendPostStatus500(infoHolderAnyCardNumber, pathForPay);
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderAnyCardNumber, pathForCredit);
         assertEquals(500, response);
     }
 
     @Test
     void shouldUseCardWithPartNumberForCredit() {
         var infoHolder = DataHelper.Registration.getPartCardNumber();
-        var pathForPay = DataHelper.getCreditPath();
-        var response = api.sendPostStatus500(infoHolder, pathForPay);
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolder, pathForCredit);
         assertEquals(500, response);
     }
 
+    @Test
+    void shouldUseMoreDigitsInCardNumberForCredit() {
+        var infoMoreDigitsInCardNumber = DataHelper.Registration.getMoreDigitsInCardNumber();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoMoreDigitsInCardNumber, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseCardNumberWithoutDigitForCredit() {
+        var infoCardNumberWithoutDigit = DataHelper.Registration.getCardNumberWithoutDigit();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoCardNumberWithoutDigit, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseMonthDoubleZeroForCredit() {
+        var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderDoubleZeroMonth, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseMonthOverForCredit() {
+        var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolder13Month, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseEmptyMonthFieldForCredit() {
+        var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoEmptyMonthField, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseCardWithOneDigitMonthForCredit() {
+        var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderOneDigitMonth, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseMoreDigitsInMonthForCredit() {
+        var infoHolderMoreDigitsInMonth = DataHelper.Registration.getMoreDigitsInMonth();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderMoreDigitsInMonth, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseMonthWithoutDigitForCredit() {
+        var infoHolderMonthWithoutDigit = DataHelper.Registration.getMonthWithoutDigit();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus400(infoHolderMonthWithoutDigit, pathForCredit);
+        assertEquals(400, response);
+    }
+
+    @Test
+    void shouldUsePastYearForCredit() {
+        var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderPastYear, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseFutureYearOverForCredit() {
+        var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderFutureYear, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseEmptyYearFieldForCredit() {
+        var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoEmptyYearField, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseCardWithOneDigitYearForCredit() {
+        var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderOneDigitYear, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseMoreDigitsInYearForCredit() {
+        var infoHolderMoreDigitsInYear = DataHelper.Registration.getMoreDigitsInYearCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderMoreDigitsInYear, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseYearWithoutDigitForCredit() {
+        var infoHolderYearWithoutDigit = DataHelper.Registration.getYearWithoutDigitCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus400(infoHolderYearWithoutDigit, pathForCredit);
+        assertEquals(400, response);
+    }
+
+    @Test
+    void shouldUseCardWithCurrentPeriodForCredit() {
+        var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus200(infoCardWithCurrentPeriod, pathForCredit);
+        assertEquals(DataHelper.getApprovedStatus(), response);
+    }
+
+    @Test
+    void shouldUseCardWithCyrillicHolderForCredit() {
+        var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoCyrillicHolder, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseCardWithSymbolHolderForCredit() {
+        var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoSymbolHolder, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseEmptyHolderFieldForCredit() {
+        var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoEmptyHolderField, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseEmptyCvcFieldForCredit() {
+        var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoEmptyCvcField, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseCardWithOneDigitCvcForCredit() {
+        var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderOneDigitCvc, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseMoreDigitsInCvcForCredit() {
+        var infoHolderMoreDigitsInCvc = DataHelper.Registration.getMoreDigitsInCvcCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus500(infoHolderMoreDigitsInCvc, pathForCredit);
+        assertEquals(500, response);
+    }
+
+    @Test
+    void shouldUseCvcWithoutDigitForCredit() {
+        var infoHolderCvcWithoutDigit = DataHelper.Registration.getCvcWithoutDigitCard();
+        var pathForCredit = DataHelper.getCreditPath();
+        var response = api.sendPostStatus400(infoHolderCvcWithoutDigit, pathForCredit);
+        assertEquals(400, response);
+    }
 }
