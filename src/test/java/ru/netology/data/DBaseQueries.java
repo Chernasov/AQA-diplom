@@ -10,7 +10,8 @@ import org.checkerframework.checker.units.qual.C;
 import java.sql.DriverManager;
 
 public class DBaseQueries {
-    private static String url = "jdbc:mysql://localhost:3306/app_db";
+//    private static String url = "jdbc:mysql://localhost:3306/app_db";
+    private static String url = System.getProperty("datasource.url");
     private static String user = "user";
     private static String password = "password";
 
@@ -56,6 +57,16 @@ public class DBaseQueries {
         var runner = new QueryRunner();
         try (var conn = DriverManager.getConnection(url, user, password)) {
             return runner.query(conn, creditSQL, new BeanHandler<>(CreditRequestEntity.class));
+        }
+    }
+
+    @SneakyThrows
+    public static void clearAllData() {
+        var runner = new QueryRunner();
+        try (var conn = DriverManager.getConnection(url, user, password)) {
+            runner.execute(conn, "TRUNCATE credit_request_entity");
+            runner.execute(conn, "TRUNCATE payment_entity");
+            runner.execute(conn, "TRUNCATE order_entity");
         }
     }
 }

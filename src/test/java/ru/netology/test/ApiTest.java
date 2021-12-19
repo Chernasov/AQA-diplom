@@ -5,12 +5,11 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import ru.netology.data.DBaseQueries;
 import ru.netology.data.DataHelper;
 import ru.netology.page.ApiPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static ru.netology.data.DBaseQueries.*;
-import static ru.netology.data.DBaseQueries.getCredit;
 
 public class ApiTest {
     private ApiPage api = new ApiPage();
@@ -23,6 +22,7 @@ public class ApiTest {
     @AfterAll
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
+        DBaseQueries.clearAllData();
     }
 
     @Test

@@ -3,6 +3,7 @@ package ru.netology.test;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import ru.netology.data.DBaseQueries;
 import ru.netology.data.DataHelper;
 import ru.netology.page.MainPage;
 
@@ -27,6 +28,7 @@ public class PayByCardTest {
     @AfterAll
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
+        DBaseQueries.clearAllData();
     }
 
     @Test
