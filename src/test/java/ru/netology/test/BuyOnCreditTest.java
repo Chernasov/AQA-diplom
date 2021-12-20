@@ -253,7 +253,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldSwithByCredit() {
+    void shouldSwitchByCredit() {
         var buyOnCredit = mainPage.buyOnCredit();
         buyOnCredit.payByCard();
     }

@@ -2,7 +2,10 @@ package ru.netology.test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ru.netology.data.DBaseQueries;
 import ru.netology.data.DataHelper;
 import ru.netology.page.MainPage;
@@ -32,7 +35,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseApprovedCard() {
+    void shouldSuccessSendValidFormUseApprovedCard() {
         var payByCard = mainPage.payByCard();
         var infoValidHolder = DataHelper.Registration.getValidUser();
         payByCard.setUp(infoValidHolder);
@@ -42,7 +45,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseDeclinedCard() {
+    void shouldGetErrorSendValidFormUseDeclinedCard() {
         var payByCard = mainPage.payByCard();
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
         payByCard.setUp(infoHolderDeclinedCard);
@@ -52,7 +55,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseEmptyCardNumber() {
+    void shouldGetSubtitleUseEmptyCardNumber() {
         var payByCard = mainPage.payByCard();
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         payByCard.setUp(infoEmptyCardNumber);
@@ -60,7 +63,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseAnyCardNumber() {
+    void shouldGetErrorUseAnyCardNumber() {
         var payByCard = mainPage.payByCard();
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         payByCard.setUp(infoHolderAnyCardNumber);
@@ -68,7 +71,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithPartNumber() {
+    void shouldGetSubtitleUseCardWithPartNumber() {
         var payByCard = mainPage.payByCard();
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         payByCard.setUp(infoHolder);
@@ -76,7 +79,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCardNumber() {
+    void shouldTakeOnly16DigitsInFieldUseMoreDigitsInCardNumber() {
         var payByCard = mainPage.payByCard();
         var cardNumber = DataHelper.getRandomCardNumber();
         var digit = DataHelper.getOneDigit();
@@ -84,7 +87,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardNumberWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseCardNumberWithoutDigit() {
         var payByCard = mainPage.payByCard();
         var cardNumber = DataHelper.getSymbolString(16);
         var digit = DataHelper.getOneDigit();
@@ -92,7 +95,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMonthDoubleZero() {
+    void shouldGetSubtitleUseMonthDoubleZero() {
         var payByCard = mainPage.payByCard();
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         payByCard.setUp(infoHolderDoubleZeroMonth);
@@ -100,7 +103,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMonthOver() {
+    void shouldGetSubtitleUseMonthOver() {
         var payByCard = mainPage.payByCard();
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         payByCard.setUp(infoHolder13Month);
@@ -108,7 +111,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseEmptyMonthField() {
+    void shouldGetSubtitleUseEmptyMonthField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         payByCard.setUp(infoEmptyMonthField);
@@ -116,7 +119,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitMonth() {
+    void shouldGetSubtitleUseCardWithOneDigitMonth() {
         var payByCard = mainPage.payByCard();
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         payByCard.setUp(infoHolderOneDigitMonth);
@@ -124,7 +127,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInMonth() {
+    void shouldTakeOnly2DigitsInFieldUseMoreDigitsInMonth() {
         var payByCard = mainPage.payByCard();
         var month = DataHelper.getMonth();
         var digit = DataHelper.getOneDigit();
@@ -132,7 +135,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMonthWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseMonthWithoutDigit() {
         var payByCard = mainPage.payByCard();
         var month = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
@@ -140,7 +143,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUsePastYear() {
+    void shouldGetSubtitleUsePastYear() {
         var payByCard = mainPage.payByCard();
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         payByCard.setUp(infoHolderPastYear);
@@ -148,7 +151,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseFutureYearOver() {
+    void shouldGetSubtitleUseFutureYearOver() {
         var payByCard = mainPage.payByCard();
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         payByCard.setUp(infoHolderFutureYear);
@@ -156,7 +159,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseEmptyYearField() {
+    void shouldGetSubtitleUseEmptyYearField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         payByCard.setUp(infoEmptyYearField);
@@ -164,7 +167,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitYear() {
+    void shouldGetSubtitleUseCardWithOneDigitYear() {
         var payByCard = mainPage.payByCard();
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         payByCard.setUp(infoHolderOneDigitYear);
@@ -172,7 +175,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInYear() {
+    void shouldTakeOnly2DigitsInFieldUseMoreDigitsInYear() {
         var payByCard = mainPage.payByCard();
         var year = DataHelper.getYearFutureInPeriod();
         var digit = DataHelper.getOneDigit();
@@ -180,7 +183,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseYearWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseYearWithoutDigit() {
         var payByCard = mainPage.payByCard();
         var year = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
@@ -188,7 +191,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithCurrentPeriod() {
+    void shouldSuccessUseCardWithCurrentPeriod() {
         var payByCard = mainPage.payByCard();
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
         payByCard.setUp(infoCardWithCurrentPeriod);
@@ -198,7 +201,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithCyrillicHolder() {
+    void shouldGetSubtitleUseCardWithCyrillicHolder() {
         var payByCard = mainPage.payByCard();
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         payByCard.setUp(infoCyrillicHolder);
@@ -206,7 +209,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithSymbolHolder() {
+    void shouldGetSubtitleUseCardWithSymbolHolder() {
         var payByCard = mainPage.payByCard();
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         payByCard.setUp(infoSymbolHolder);
@@ -214,7 +217,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseEmptyHolderField() {
+    void shouldGetSubtitleUseEmptyHolderField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         payByCard.setUp(infoEmptyHolderField);
@@ -222,7 +225,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseEmptyCvcField() {
+    void shouldGetSubtitleUseEmptyCvcField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         payByCard.setUp(infoEmptyCvcField);
@@ -230,7 +233,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitCvc() {
+    void shouldGetSubtitleUseCardWithOneDigitCvc() {
         var payByCard = mainPage.payByCard();
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         payByCard.setUp(infoHolderOneDigitCvc);
@@ -238,7 +241,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCvc() {
+    void shouldTakeOnly3DigitsInFieldUseMoreDigitsInCvc() {
         var payByCard = mainPage.payByCard();
         var cvc = DataHelper.getCVC();
         var digit = DataHelper.getOneDigit();
@@ -246,7 +249,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldUseCvcWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseCvcWithoutDigit() {
         var payByCard = mainPage.payByCard();
         var cvc = DataHelper.getSymbolString(3);
         var digit = DataHelper.getOneDigit();
@@ -254,7 +257,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldSwithByCredit() {
+    void shouldSwitchOnPageByCredit() {
         var payByCard = mainPage.payByCard();
         payByCard.buyOnCredit();
     }

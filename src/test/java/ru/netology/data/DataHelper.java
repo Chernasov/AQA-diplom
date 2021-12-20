@@ -231,12 +231,6 @@ public class DataHelper {
         }
     }
 
-    @Value
-    @Data
-    public static class PathForApi {
-        String path;
-    }
-
     public static String getPayPath() {
         return "/api/v1/pay";
     }
@@ -244,4 +238,10 @@ public class DataHelper {
     public static String getCreditPath() {
         return "/api/v1/credit";
     }
+
+    public static int getStatusCodeSuccess() {return 200;}
+
+    public static int getStatusCodeClientError() {return 400;}
+
+    public static int getStatusCodeServerError() {return 500;}
 }
