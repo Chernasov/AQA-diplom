@@ -35,7 +35,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldSuccessSendValidFormUseApprovedCard() {
+    void shouldSuccessMessageSendValidFormUseApprovedCard() {
         var payByCard = mainPage.payByCard();
         var infoValidHolder = DataHelper.Registration.getValidUser();
         payByCard.setUp(infoValidHolder);
@@ -45,7 +45,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetErrorSendValidFormUseDeclinedCard() {
+    void shouldGetErrorMessageSendValidFormUseDeclinedCard() {
         var payByCard = mainPage.payByCard();
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
         payByCard.setUp(infoHolderDeclinedCard);
@@ -55,7 +55,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseEmptyCardNumber() {
+    void shouldGetSubtitleWrongFormatUseEmptyCardNumber() {
         var payByCard = mainPage.payByCard();
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         payByCard.setUp(infoEmptyCardNumber);
@@ -63,7 +63,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetErrorUseAnyCardNumber() {
+    void shouldGetErrorMessageUseAnyCardNumber() {
         var payByCard = mainPage.payByCard();
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         payByCard.setUp(infoHolderAnyCardNumber);
@@ -71,7 +71,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseCardWithPartNumber() {
+    void shouldGetSubtitleWrongFormatUseCardWithPartNumber() {
         var payByCard = mainPage.payByCard();
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         payByCard.setUp(infoHolder);
@@ -95,7 +95,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseMonthDoubleZero() {
+    void shouldGetSubtitleWrongPeriodUseMonthDoubleZero() {
         var payByCard = mainPage.payByCard();
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         payByCard.setUp(infoHolderDoubleZeroMonth);
@@ -103,7 +103,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseMonthOver() {
+    void shouldGetSubtitleWrongPeriodUseMonthOver() {
         var payByCard = mainPage.payByCard();
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         payByCard.setUp(infoHolder13Month);
@@ -111,7 +111,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseEmptyMonthField() {
+    void shouldGetSubtitleWrongFormatUseEmptyMonthField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         payByCard.setUp(infoEmptyMonthField);
@@ -119,7 +119,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseCardWithOneDigitMonth() {
+    void shouldGetSubtitleWrongFormatUseCardWithOneDigitMonth() {
         var payByCard = mainPage.payByCard();
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         payByCard.setUp(infoHolderOneDigitMonth);
@@ -143,7 +143,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUsePastYear() {
+    void shouldGetSubtitleExpiredUsePastYear() {
         var payByCard = mainPage.payByCard();
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         payByCard.setUp(infoHolderPastYear);
@@ -151,7 +151,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseFutureYearOver() {
+    void shouldGetSubtitleWrongPeriodUseFutureYearOver() {
         var payByCard = mainPage.payByCard();
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         payByCard.setUp(infoHolderFutureYear);
@@ -159,7 +159,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseEmptyYearField() {
+    void shouldGetSubtitleWrongFormatUseEmptyYearField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         payByCard.setUp(infoEmptyYearField);
@@ -167,7 +167,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseCardWithOneDigitYear() {
+    void shouldGetSubtitleWrongFormatUseCardWithOneDigitYear() {
         var payByCard = mainPage.payByCard();
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         payByCard.setUp(infoHolderOneDigitYear);
@@ -191,7 +191,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldSuccessUseCardWithCurrentPeriod() {
+    void shouldSuccessMessageUseCardWithCurrentPeriod() {
         var payByCard = mainPage.payByCard();
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
         payByCard.setUp(infoCardWithCurrentPeriod);
@@ -201,7 +201,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseCardWithCyrillicHolder() {
+    void shouldGetSubtitleWrongFormatUseCardWithCyrillicHolder() {
         var payByCard = mainPage.payByCard();
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         payByCard.setUp(infoCyrillicHolder);
@@ -209,7 +209,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseCardWithSymbolHolder() {
+    void shouldGetSubtitleWrongFormatUseCardWithSymbolHolder() {
         var payByCard = mainPage.payByCard();
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         payByCard.setUp(infoSymbolHolder);
@@ -217,7 +217,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseEmptyHolderField() {
+    void shouldGetSubtitleNecessarilyFieldUseEmptyHolderField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         payByCard.setUp(infoEmptyHolderField);
@@ -225,7 +225,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseEmptyCvcField() {
+    void shouldGetSubtitleWrongFormatUseEmptyCvcField() {
         var payByCard = mainPage.payByCard();
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         payByCard.setUp(infoEmptyCvcField);
@@ -233,7 +233,7 @@ public class PayByCardTest {
     }
 
     @Test
-    void shouldGetSubtitleUseCardWithOneDigitCvc() {
+    void shouldGetSubtitleWrongFormatUseCardWithOneDigitCvc() {
         var payByCard = mainPage.payByCard();
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         payByCard.setUp(infoHolderOneDigitCvc);

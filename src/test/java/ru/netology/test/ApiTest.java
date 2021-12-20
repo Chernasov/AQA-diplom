@@ -28,7 +28,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseApprovedCardForPay() {
+    void shouldSuccessStatusSendValidFormSendApprovedCardForPay() {
         var infoValidHolder = DataHelper.Registration.getValidUser();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeSuccess();
@@ -39,7 +39,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseDeclinedCardForPay() {
+    void shouldSuccessStatusSendValidFormSendDeclinedCardForPay() {
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeSuccess();
@@ -50,7 +50,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyCardNumberForPay() {
+    void shouldServerErrorStatusSendEmptyCardNumberForPay() {
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -58,7 +58,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseAnyCardNumberForPay() {
+    void shouldServerErrorStatusSendAnyCardNumberForPay() {
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -66,7 +66,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithPartNumberForPay() {
+    void shouldServerErrorStatusSendCardWithPartNumberForPay() {
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -74,7 +74,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCardNumberForPay() {
+    void shouldServerErrorStatusSendMoreDigitsInCardNumberForPay() {
         var infoMoreDigitsInCardNumber = DataHelper.Registration.getMoreDigitsInCardNumber();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -82,7 +82,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardNumberWithoutDigitForPay() {
+    void shouldServerErrorStatusSendCardNumberWithoutDigitForPay() {
         var infoCardNumberWithoutDigit = DataHelper.Registration.getCardNumberWithoutDigit();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -90,7 +90,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMonthDoubleZeroForPay() {
+    void shouldServerErrorStatusSendMonthDoubleZeroForPay() {
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -98,7 +98,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMonthOverForPay() {
+    void shouldServerErrorStatusSendMonthOverForPay() {
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -106,7 +106,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyMonthFieldForPay() {
+    void shouldServerErrorStatusSendEmptyMonthFieldForPay() {
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -114,7 +114,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitMonthForPay() {
+    void shouldServerErrorStatusSendCardWithOneDigitMonthForPay() {
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -122,7 +122,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInMonthForPay() {
+    void shouldServerErrorStatusSendMoreDigitsInMonthForPay() {
         var infoHolderMoreDigitsInMonth = DataHelper.Registration.getMoreDigitsInMonth();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -130,7 +130,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMonthWithoutDigitForPay() {
+    void shouldClientErrorStatusSendMonthWithoutDigitForPay() {
         var infoHolderMonthWithoutDigit = DataHelper.Registration.getMonthWithoutDigit();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeClientError();
@@ -138,7 +138,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUsePastYearForPay() {
+    void shouldServerErrorStatusSendPastYearForPay() {
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -146,7 +146,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseFutureYearOverForPay() {
+    void shouldServerErrorStatusSendFutureYearOverForPay() {
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -154,7 +154,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyYearFieldForPay() {
+    void shouldServerErrorStatusSendEmptyYearFieldForPay() {
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -162,7 +162,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitYearForPay() {
+    void shouldServerErrorStatusSendCardWithOneDigitYearForPay() {
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -170,7 +170,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInYearForPay() {
+    void shouldServerErrorStatusSendMoreDigitsInYearForPay() {
         var infoHolderMoreDigitsInYear = DataHelper.Registration.getMoreDigitsInYearCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -178,7 +178,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseYearWithoutDigitForPay() {
+    void shouldClientErrorStatusSendYearWithoutDigitForPay() {
         var infoHolderYearWithoutDigit = DataHelper.Registration.getYearWithoutDigitCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeClientError();
@@ -186,7 +186,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithCurrentPeriodForPay() {
+    void shouldSuccessStatusSendCardWithCurrentPeriodForPay() {
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeSuccess();
@@ -197,7 +197,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithCyrillicHolderForPay() {
+    void shouldServerErrorStatusSendCardWithCyrillicHolderForPay() {
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -205,7 +205,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithSymbolHolderForPay() {
+    void shouldServerErrorStatusSendCardWithSymbolHolderForPay() {
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -213,7 +213,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyHolderFieldForPay() {
+    void shouldServerErrorStatusSendEmptyHolderFieldForPay() {
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -221,7 +221,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyCvcFieldForPay() {
+    void shouldServerErrorStatusSendEmptyCvcFieldForPay() {
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -229,7 +229,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitCvcForPay() {
+    void shouldServerErrorStatusSendCardWithOneDigitCvcForPay() {
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -237,7 +237,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCvcForPay() {
+    void shouldServerErrorStatusSendMoreDigitsInCvcForPay() {
         var infoHolderMoreDigitsInCvc = DataHelper.Registration.getMoreDigitsInCvcCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -245,7 +245,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCvcWithoutDigitForPay() {
+    void shouldClientErrorStatusSendCvcWithoutDigitForPay() {
         var infoHolderCvcWithoutDigit = DataHelper.Registration.getCvcWithoutDigitCard();
         var pathForPay = DataHelper.getPayPath();
         var statusCode = DataHelper.getStatusCodeClientError();
@@ -254,7 +254,7 @@ public class ApiTest {
     // далее для кредитования
 
     @Test
-    void shouldUseApprovedCardForCredit() {
+    void shouldSuccessStatusSendApprovedCardForCredit() {
         var infoValidHolder = DataHelper.Registration.getValidUser();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeSuccess();
@@ -265,7 +265,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseDeclinedCardForCredit() {
+    void shouldSuccessStatusSendDeclinedCardForCredit() {
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeSuccess();
@@ -276,7 +276,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyCardNumberForCredit() {
+    void shouldServerErrorStatusSendEmptyCardNumberForCredit() {
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -284,7 +284,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseAnyCardNumberForCredit() {
+    void shouldServerErrorStatusSendAnyCardNumberForCredit() {
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -292,7 +292,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithPartNumberForCredit() {
+    void shouldServerErrorStatusSendCardWithPartNumberForCredit() {
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -300,7 +300,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCardNumberForCredit() {
+    void shouldServerErrorStatusSendMoreDigitsInCardNumberForCredit() {
         var infoMoreDigitsInCardNumber = DataHelper.Registration.getMoreDigitsInCardNumber();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -308,7 +308,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardNumberWithoutDigitForCredit() {
+    void shouldServerErrorStatusSendCardNumberWithoutDigitForCredit() {
         var infoCardNumberWithoutDigit = DataHelper.Registration.getCardNumberWithoutDigit();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -316,7 +316,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMonthDoubleZeroForCredit() {
+    void shouldServerErrorStatusSendMonthDoubleZeroForCredit() {
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -324,7 +324,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMonthOverForCredit() {
+    void shouldServerErrorStatusSendMonthOverForCredit() {
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -332,7 +332,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyMonthFieldForCredit() {
+    void shouldServerErrorStatusSendEmptyMonthFieldForCredit() {
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -340,7 +340,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitMonthForCredit() {
+    void shouldServerErrorStatusSendCardWithOneDigitMonthForCredit() {
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -348,7 +348,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInMonthForCredit() {
+    void shouldServerErrorStatusSendMoreDigitsInMonthForCredit() {
         var infoHolderMoreDigitsInMonth = DataHelper.Registration.getMoreDigitsInMonth();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -356,7 +356,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMonthWithoutDigitForCredit() {
+    void shouldClientErrorStatusSendMonthWithoutDigitForCredit() {
         var infoHolderMonthWithoutDigit = DataHelper.Registration.getMonthWithoutDigit();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeClientError();
@@ -364,7 +364,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUsePastYearForCredit() {
+    void shouldServerErrorStatusSendPastYearForCredit() {
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -372,7 +372,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseFutureYearOverForCredit() {
+    void shouldServerErrorStatusSendFutureYearOverForCredit() {
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -380,7 +380,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyYearFieldForCredit() {
+    void shouldServerErrorStatusSendEmptyYearFieldForCredit() {
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -388,7 +388,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitYearForCredit() {
+    void shouldServerErrorStatusSendCardWithOneDigitYearForCredit() {
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -396,7 +396,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInYearForCredit() {
+    void shouldServerErrorStatusSendMoreDigitsInYearForCredit() {
         var infoHolderMoreDigitsInYear = DataHelper.Registration.getMoreDigitsInYearCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -404,7 +404,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseYearWithoutDigitForCredit() {
+    void shouldClientErrorStatusSendYearWithoutDigitForCredit() {
         var infoHolderYearWithoutDigit = DataHelper.Registration.getYearWithoutDigitCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeClientError();
@@ -412,7 +412,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithCurrentPeriodForCredit() {
+    void shouldSuccessStatusSendCardWithCurrentPeriodForCredit() {
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeSuccess();
@@ -423,7 +423,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithCyrillicHolderForCredit() {
+    void shouldServerErrorStatusSendCardWithCyrillicHolderForCredit() {
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -431,7 +431,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithSymbolHolderForCredit() {
+    void shouldServerErrorStatusSendCardWithSymbolHolderForCredit() {
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -439,7 +439,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyHolderFieldForCredit() {
+    void shouldServerErrorStatusSendEmptyHolderFieldForCredit() {
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -447,7 +447,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseEmptyCvcFieldForCredit() {
+    void shouldServerErrorStatusSendEmptyCvcFieldForCredit() {
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -455,7 +455,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitCvcForCredit() {
+    void shouldServerErrorStatusSendCardWithOneDigitCvcForCredit() {
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -463,7 +463,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCvcForCredit() {
+    void shouldServerErrorStatusSendMoreDigitsInCvcForCredit() {
         var infoHolderMoreDigitsInCvc = DataHelper.Registration.getMoreDigitsInCvcCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeServerError();
@@ -471,7 +471,7 @@ public class ApiTest {
     }
 
     @Test
-    void shouldUseCvcWithoutDigitForCredit() {
+    void shouldClientErrorStatusSendCvcWithoutDigitForCredit() {
         var infoHolderCvcWithoutDigit = DataHelper.Registration.getCvcWithoutDigitCard();
         var pathForCredit = DataHelper.getCreditPath();
         var statusCode = DataHelper.getStatusCodeClientError();

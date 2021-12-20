@@ -31,7 +31,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseApprovedCard() {
+    void shouldSuccessMessageSendValidFormUseApprovedCard() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoValidHolder = DataHelper.Registration.getValidUser();
         buyOnCredit.setUp(infoValidHolder);
@@ -41,7 +41,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseDeclinedCard() {
+    void shouldGetErrorMessageSendValidFormUseDeclinedCard() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderDeclinedCard = DataHelper.Registration.getDeclinedUser();
         buyOnCredit.setUp(infoHolderDeclinedCard);
@@ -51,7 +51,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseEmptyCardNumber() {
+    void shouldGetSubtitleWrongFormatUseEmptyCardNumber() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         buyOnCredit.setUp(infoEmptyCardNumber);
@@ -59,7 +59,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseAnyCardNumber() {
+    void shouldGetErrorMessageUseAnyCardNumber() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         buyOnCredit.setUp(infoHolderAnyCardNumber);
@@ -67,7 +67,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithPartNumber() {
+    void shouldGetSubtitleWrongFormatUseCardWithPartNumber() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         buyOnCredit.setUp(infoHolder);
@@ -75,7 +75,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCardNumber() {
+    void shouldTakeOnly16DigitsInFieldUseMoreDigitsInCardNumber() {
         var buyOnCredit = mainPage.buyOnCredit();
         var cardNumber = DataHelper.getRandomCardNumber();
         var digit = DataHelper.getOneDigit();
@@ -83,7 +83,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardNumberWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseCardNumberWithoutDigit() {
         var buyOnCredit = mainPage.buyOnCredit();
         var cardNumber = DataHelper.getSymbolString(16);
         var digit = DataHelper.getOneDigit();
@@ -91,7 +91,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMonthDoubleZero() {
+    void shouldGetSubtitleWrongPeriodUseMonthDoubleZero() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         buyOnCredit.setUp(infoHolderDoubleZeroMonth);
@@ -99,7 +99,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMonthOver() {
+    void shouldGetSubtitleWrongPeriodUseMonthOver() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         buyOnCredit.setUp(infoHolder13Month);
@@ -107,7 +107,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseEmptyMonthField() {
+    void shouldGetSubtitleWrongFormatUseEmptyMonthField() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         buyOnCredit.setUp(infoEmptyMonthField);
@@ -115,7 +115,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitMonth() {
+    void shouldGetSubtitleWrongFormatUseCardWithOneDigitMonth() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         buyOnCredit.setUp(infoHolderOneDigitMonth);
@@ -123,7 +123,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInMonth() {
+    void shouldTakeOnly2DigitsInFieldUseMoreDigitsInMonth() {
         var buyOnCredit = mainPage.buyOnCredit();
         var month = DataHelper.getMonth();
         var digit = DataHelper.getOneDigit();
@@ -131,7 +131,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMonthWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseMonthWithoutDigit() {
         var buyOnCredit = mainPage.buyOnCredit();
         var month = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
@@ -139,7 +139,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUsePastYear() {
+    void shouldGetSubtitleExpiredUsePastYear() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         buyOnCredit.setUp(infoHolderPastYear);
@@ -147,7 +147,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseFutureYearOver() {
+    void shouldGetSubtitleWrongPeriodUseFutureYearOver() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         buyOnCredit.setUp(infoHolderFutureYear);
@@ -155,7 +155,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseEmptyYearField() {
+    void shouldGetSubtitleWrongFormatUseEmptyYearField() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         buyOnCredit.setUp(infoEmptyYearField);
@@ -163,7 +163,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitYear() {
+    void shouldGetSubtitleWrongFormatUseCardWithOneDigitYear() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         buyOnCredit.setUp(infoHolderOneDigitYear);
@@ -171,7 +171,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInYear() {
+    void shouldTakeOnly2DigitsInFieldUseMoreDigitsInYear() {
         var buyOnCredit = mainPage.buyOnCredit();
         var year = DataHelper.getYearFutureInPeriod();
         var digit = DataHelper.getOneDigit();
@@ -179,7 +179,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseYearWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseYearWithoutDigit() {
         var buyOnCredit = mainPage.buyOnCredit();
         var year = DataHelper.getSymbolString(2);
         var digit = DataHelper.getOneDigit();
@@ -187,7 +187,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithCurrentPeriod() {
+    void shouldSuccessMessageUseCardWithCurrentPeriod() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoCardWithCurrentPeriod = DataHelper.Registration.getCardWithCurrentPeriod();
         buyOnCredit.setUp(infoCardWithCurrentPeriod);
@@ -197,7 +197,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithCyrillicHolder() {
+    void shouldGetSubtitleWrongFormatUseCardWithCyrillicHolder() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         buyOnCredit.setUp(infoCyrillicHolder);
@@ -205,7 +205,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithSymbolHolder() {
+    void shouldGetSubtitleWrongFormatUseCardWithSymbolHolder() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         buyOnCredit.setUp(infoSymbolHolder);
@@ -213,7 +213,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseEmptyHolderField() {
+    void shouldGetSubtitleNecessarilyFieldUseEmptyHolderField() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         buyOnCredit.setUp(infoEmptyHolderField);
@@ -221,7 +221,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseEmptyCvcField() {
+    void shouldGetSubtitleWrongFormatUseEmptyCvcField() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         buyOnCredit.setUp(infoEmptyCvcField);
@@ -229,7 +229,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCardWithOneDigitCvc() {
+    void shouldGetSubtitleWrongFormatUseCardWithOneDigitCvc() {
         var buyOnCredit = mainPage.buyOnCredit();
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         buyOnCredit.setUp(infoHolderOneDigitCvc);
@@ -237,7 +237,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseMoreDigitsInCvc() {
+    void shouldTakeOnly3DigitsInFieldUseMoreDigitsInCvc() {
         var buyOnCredit = mainPage.buyOnCredit();
         var cvc = DataHelper.getCVC();
         var digit = DataHelper.getOneDigit();
@@ -245,7 +245,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldUseCvcWithoutDigit() {
+    void shouldNotTakeSymbolInFieldUseCvcWithoutDigit() {
         var buyOnCredit = mainPage.buyOnCredit();
         var cvc = DataHelper.getSymbolString(3);
         var digit = DataHelper.getOneDigit();
@@ -253,7 +253,7 @@ public class BuyOnCreditTest {
     }
 
     @Test
-    void shouldSwitchByCredit() {
+    void shouldSwitchOnPageByPay() {
         var buyOnCredit = mainPage.buyOnCredit();
         buyOnCredit.payByCard();
     }
