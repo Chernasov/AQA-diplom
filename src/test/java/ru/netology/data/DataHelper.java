@@ -243,5 +243,4 @@ public class DataHelper {
 
     public static int getStatusCodeClientError() {return 400;}
 
-    public static int getStatusCodeServerError() {return 500;}
 }

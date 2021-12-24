@@ -37,14 +37,14 @@ public class BuyOnCredit {
     }
 
     public void successMessage() {
-        messageSuccess.shouldBe(visible, Duration.ofSeconds(15));
+        messageSuccess.shouldBe(visible, Duration.ofSeconds(16));
         closer.first().click();
         messageSuccess.shouldBe(hidden);
         messageError.shouldBe(hidden);
     }
 
     public void errorMessage() {
-        messageError.shouldBe(visible, Duration.ofSeconds(15));
+        messageError.shouldBe(visible, Duration.ofSeconds(16));
         closer.last().click();
         messageError.shouldBe(hidden);
         messageSuccess.shouldBe(hidden);

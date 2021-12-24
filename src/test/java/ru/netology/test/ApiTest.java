@@ -50,82 +50,82 @@ public class ApiTest {
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyCardNumberForPay() {
+    void shouldClientErrorStatusSendEmptyCardNumberForPay() {
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyCardNumber, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendAnyCardNumberForPay() {
+    void shouldClientErrorStatusSendAnyCardNumberForPay() {
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderAnyCardNumber, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithPartNumberForPay() {
+    void shouldClientErrorStatusSendCardWithPartNumberForPay() {
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolder, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInCardNumberForPay() {
+    void shouldClientErrorStatusSendMoreDigitsInCardNumberForPay() {
         var infoMoreDigitsInCardNumber = DataHelper.Registration.getMoreDigitsInCardNumber();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoMoreDigitsInCardNumber, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardNumberWithoutDigitForPay() {
+    void shouldClientErrorStatusSendCardNumberWithoutDigitForPay() {
         var infoCardNumberWithoutDigit = DataHelper.Registration.getCardNumberWithoutDigit();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoCardNumberWithoutDigit, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMonthDoubleZeroForPay() {
+    void shouldClientErrorStatusSendMonthDoubleZeroForPay() {
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderDoubleZeroMonth, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMonthOverForPay() {
+    void shouldClientErrorStatusSendMonthOverForPay() {
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolder13Month, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyMonthFieldForPay() {
+    void shouldClientErrorStatusSendEmptyMonthFieldForPay() {
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyMonthField, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithOneDigitMonthForPay() {
+    void shouldClientErrorStatusSendCardWithOneDigitMonthForPay() {
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderOneDigitMonth, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInMonthForPay() {
+    void shouldClientErrorStatusSendMoreDigitsInMonthForPay() {
         var infoHolderMoreDigitsInMonth = DataHelper.Registration.getMoreDigitsInMonth();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderMoreDigitsInMonth, pathForPay, statusCode);
     }
 
@@ -138,42 +138,42 @@ public class ApiTest {
     }
 
     @Test
-    void shouldServerErrorStatusSendPastYearForPay() {
+    void shouldClientErrorStatusSendPastYearForPay() {
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderPastYear, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendFutureYearOverForPay() {
+    void shouldClientErrorStatusSendFutureYearOverForPay() {
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderFutureYear, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyYearFieldForPay() {
+    void shouldClientErrorStatusSendEmptyYearFieldForPay() {
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyYearField, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithOneDigitYearForPay() {
+    void shouldClientErrorStatusSendCardWithOneDigitYearForPay() {
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderOneDigitYear, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInYearForPay() {
+    void shouldClientErrorStatusSendMoreDigitsInYearForPay() {
         var infoHolderMoreDigitsInYear = DataHelper.Registration.getMoreDigitsInYearCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderMoreDigitsInYear, pathForPay, statusCode);
     }
 
@@ -197,50 +197,50 @@ public class ApiTest {
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithCyrillicHolderForPay() {
+    void shouldClientErrorStatusSendCardWithCyrillicHolderForPay() {
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoCyrillicHolder, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithSymbolHolderForPay() {
+    void shouldClientErrorStatusSendCardWithSymbolHolderForPay() {
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoSymbolHolder, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyHolderFieldForPay() {
+    void shouldClientErrorStatusSendEmptyHolderFieldForPay() {
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyHolderField, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyCvcFieldForPay() {
+    void shouldClientErrorStatusSendEmptyCvcFieldForPay() {
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyCvcField, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithOneDigitCvcForPay() {
+    void shouldClientErrorStatusSendCardWithOneDigitCvcForPay() {
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderOneDigitCvc, pathForPay, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInCvcForPay() {
+    void shouldClientErrorStatusSendMoreDigitsInCvcForPay() {
         var infoHolderMoreDigitsInCvc = DataHelper.Registration.getMoreDigitsInCvcCard();
         var pathForPay = DataHelper.getPayPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderMoreDigitsInCvc, pathForPay, statusCode);
     }
 
@@ -276,82 +276,82 @@ public class ApiTest {
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyCardNumberForCredit() {
+    void shouldClientErrorStatusSendEmptyCardNumberForCredit() {
         var infoEmptyCardNumber = DataHelper.Registration.getEmptyCardNumber();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyCardNumber, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendAnyCardNumberForCredit() {
+    void shouldClientErrorStatusSendAnyCardNumberForCredit() {
         var infoHolderAnyCardNumber = DataHelper.Registration.getAnyCardNumberUser();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderAnyCardNumber, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithPartNumberForCredit() {
+    void shouldClientErrorStatusSendCardWithPartNumberForCredit() {
         var infoHolder = DataHelper.Registration.getPartCardNumber();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolder, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInCardNumberForCredit() {
+    void shouldClientErrorStatusSendMoreDigitsInCardNumberForCredit() {
         var infoMoreDigitsInCardNumber = DataHelper.Registration.getMoreDigitsInCardNumber();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoMoreDigitsInCardNumber, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardNumberWithoutDigitForCredit() {
+    void shouldClientErrorStatusSendCardNumberWithoutDigitForCredit() {
         var infoCardNumberWithoutDigit = DataHelper.Registration.getCardNumberWithoutDigit();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoCardNumberWithoutDigit, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMonthDoubleZeroForCredit() {
+    void shouldClientErrorStatusSendMonthDoubleZeroForCredit() {
         var infoHolderDoubleZeroMonth = DataHelper.Registration.getMonthDoubleZeroCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderDoubleZeroMonth, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMonthOverForCredit() {
+    void shouldClientErrorStatusSendMonthOverForCredit() {
         var infoHolder13Month = DataHelper.Registration.getMonthOverCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolder13Month, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyMonthFieldForCredit() {
+    void shouldClientErrorStatusSendEmptyMonthFieldForCredit() {
         var infoEmptyMonthField = DataHelper.Registration.getEmptyMonthFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyMonthField, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithOneDigitMonthForCredit() {
+    void shouldClientErrorStatusSendCardWithOneDigitMonthForCredit() {
         var infoHolderOneDigitMonth = DataHelper.Registration.getOneDigitMonthCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderOneDigitMonth, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInMonthForCredit() {
+    void shouldClientErrorStatusSendMoreDigitsInMonthForCredit() {
         var infoHolderMoreDigitsInMonth = DataHelper.Registration.getMoreDigitsInMonth();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderMoreDigitsInMonth, pathForCredit, statusCode);
     }
 
@@ -364,42 +364,42 @@ public class ApiTest {
     }
 
     @Test
-    void shouldServerErrorStatusSendPastYearForCredit() {
+    void shouldClientErrorStatusSendPastYearForCredit() {
         var infoHolderPastYear = DataHelper.Registration.getPastYearCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderPastYear, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendFutureYearOverForCredit() {
+    void shouldClientErrorStatusSendFutureYearOverForCredit() {
         var infoHolderFutureYear = DataHelper.Registration.getFutureYearOverCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderFutureYear, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyYearFieldForCredit() {
+    void shouldClientErrorStatusSendEmptyYearFieldForCredit() {
         var infoEmptyYearField = DataHelper.Registration.getEmptyYearFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyYearField, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithOneDigitYearForCredit() {
+    void shouldClientErrorStatusSendCardWithOneDigitYearForCredit() {
         var infoHolderOneDigitYear = DataHelper.Registration.getOneDigitYearCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderOneDigitYear, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInYearForCredit() {
+    void shouldClientErrorStatusSendMoreDigitsInYearForCredit() {
         var infoHolderMoreDigitsInYear = DataHelper.Registration.getMoreDigitsInYearCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderMoreDigitsInYear, pathForCredit, statusCode);
     }
 
@@ -423,50 +423,50 @@ public class ApiTest {
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithCyrillicHolderForCredit() {
+    void shouldClientErrorStatusSendCardWithCyrillicHolderForCredit() {
         var infoCyrillicHolder = DataHelper.Registration.getCyrillicHolderCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoCyrillicHolder, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithSymbolHolderForCredit() {
+    void shouldClientErrorStatusSendCardWithSymbolHolderForCredit() {
         var infoSymbolHolder = DataHelper.Registration.getSymbolHolderCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoSymbolHolder, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyHolderFieldForCredit() {
+    void shouldClientErrorStatusSendEmptyHolderFieldForCredit() {
         var infoEmptyHolderField = DataHelper.Registration.getEmptyHolderFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyHolderField, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendEmptyCvcFieldForCredit() {
+    void shouldClientErrorStatusSendEmptyCvcFieldForCredit() {
         var infoEmptyCvcField = DataHelper.Registration.getEmptyCvcFieldCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoEmptyCvcField, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendCardWithOneDigitCvcForCredit() {
+    void shouldClientErrorStatusSendCardWithOneDigitCvcForCredit() {
         var infoHolderOneDigitCvc = DataHelper.Registration.getOneDigitCvcCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderOneDigitCvc, pathForCredit, statusCode);
     }
 
     @Test
-    void shouldServerErrorStatusSendMoreDigitsInCvcForCredit() {
+    void shouldClientErrorStatusSendMoreDigitsInCvcForCredit() {
         var infoHolderMoreDigitsInCvc = DataHelper.Registration.getMoreDigitsInCvcCard();
         var pathForCredit = DataHelper.getCreditPath();
-        var statusCode = DataHelper.getStatusCodeServerError();
+        var statusCode = DataHelper.getStatusCodeClientError();
         api.sendPostStatusError(infoHolderMoreDigitsInCvc, pathForCredit, statusCode);
     }
 
